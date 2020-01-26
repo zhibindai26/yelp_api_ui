@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <title>Business List Search</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="section">
+        <div id="app">
+            <div class="container">
+                <form id="input-form" @submit.prevent="processForm">
+                    <div class="field">
+                        <label class="label">API Key</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="This is the key for this API"
+                                v-model="api_key">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">YELP API Key</label>
+                        <div class="control">
+                            <input class="input" type="text" v-model="yelp_key">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Search Term</label>
+                        <div class="control">
+                            <input class="input" type="text" v-model="query">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Zip Code</label>
+                        <div class="control">
+                            <input class="input" type="text" v-model="zip">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label class="label">Search Radius (miles)</label>
+                            <div class="select">
+                                <select v-model="selected">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-info">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
