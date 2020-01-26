@@ -1,15 +1,29 @@
 var app = new Vue({
   el: '#app',
   data: {
-    api_key: '',
-    yelp_key: '',
+    apiUrl: 'https://o1cs6oqfgb.execute-api.us-east-2.amazonaws.com/prod/business',
+    apiKey: '',
+    yelpKey: '',
     query: '',
     zip: '',
-    selected: ''
+    selected: '',
+    yelpData: null
   },
   methods: {
-    processForm: function () {
-      console.log({ api_key: this.api_key, yelp_key: this.yelp_key, query: this.query, zip: this.zip, selected: this.selected });
+    getBusinesses: function () {
+      const url = `${this.apiUrl}?yelp_key=${this.yelpKey}&query=${this.query}&zip=${this.zip}&radius=${this.selected}`;
+
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "X-Api-Key": this.apiKey
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.yelpData = data.body;
+        console.log(this.yelpData);
+      })
     }
   }
 })

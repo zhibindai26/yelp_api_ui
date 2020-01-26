@@ -12,19 +12,19 @@
     <div class="section">
         <div id="app">
             <div class="container">
-                <form id="input-form" @submit.prevent="processForm">
+                <form id="input-form" @submit.prevent="getBusinesses">
                     <div class="field">
                         <label class="label">API Key</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="This is the key for this API"
-                                v-model="api_key">
+                                v-model="apiKey">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">YELP API Key</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="yelp_key">
+                            <input class="input" type="text" v-model="yelpKey">
                         </div>
                     </div>
 
