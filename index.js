@@ -10,7 +10,6 @@ var app = new Vue({
   },
   methods: {
     getBusinesses: function () {
-
       const url = `${this.apiUrl}?yelp_key=${this.yelpKey}&query=${this.query}&zip=${this.zip}&radius=${this.selected}`;
 
       fetch(url, {
