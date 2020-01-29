@@ -6,11 +6,11 @@ var app = new Vue({
     yelpKey: '',
     query: '',
     zip: '',
-    selected: '',
-    yelpData: null
+    selected: ''
   },
   methods: {
     getBusinesses: function () {
+
       const url = `${this.apiUrl}?yelp_key=${this.yelpKey}&query=${this.query}&zip=${this.zip}&radius=${this.selected}`;
 
       fetch(url, {
@@ -21,10 +21,16 @@ var app = new Vue({
       })
       .then(response => response.json())
       .then(data => {
-        this.yelpData = data.body;
+        this.jsonToCSV(data.body);
       })
 
-      const dataObject = this.yelpData.map(row => ({
+    },
+
+    jsonToCSV: function(apiJson) {
+      var today = new Date().toISOString().slice(0, 10)
+      var csvName = `${this.query}_${this.zip}_${today}.csv`;
+
+      const dataObject = apiJson.map(row => ({
         name: row.name,
         url: row.url,
         categories: row.categories.map(category => category.title),
@@ -33,8 +39,6 @@ var app = new Vue({
         display_phone: row.display_phone,
         address: row.Address1
       }));
-      
-      console.log(dataObject);
 
       const objToCSV = function(data) {
         const csvRows = [];
@@ -65,7 +69,7 @@ var app = new Vue({
       }
 
       const csvData = objToCSV(dataObject);
-      download(csvData, 'download.csv');
+      download(csvData, csvName);
     }
   }
 })
